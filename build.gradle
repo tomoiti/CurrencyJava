@@ -1,0 +1,39 @@
+group 'br.com.zbra.hello'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.springframework:spring-context:4.2.6.RELEASE'
+        classpath 'org.springframework:spring-webmvc:4.2.6.RELEASE'
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.34'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'appengine'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.springframework:spring-context:4.2.6.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.6.RELEASE'
+    compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: '1.9.34'
+    compile 'com.google.appengine:appengine-endpoints:1.9.28'
+    compile 'javax.servlet:servlet-api:2.5'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.google.guava:guava:19.0'
+    compile 'com.googlecode.objectify:objectify:5.1.12'
+    runtime group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'
+    runtime group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.34'
+}
